@@ -1,3 +1,11 @@
+const token =
+    localStorage.getItem("token");
+
+if(!token){
+
+    window.location.href =
+        "login.html";
+}
 const cartDiv = document.getElementById("cart");
 
 const cart =
@@ -51,9 +59,19 @@ async function placeOrder() {
     const data =
         await response.json();
 
-    alert(data.message);
+   alert(data.message);
 
-    localStorage.removeItem("cart");
+localStorage.removeItem("cart");
 
-    location.reload();
+window.location.href =
+    "orders.html";
 }
+document
+.getElementById("logoutBtn")
+.addEventListener("click",()=>{
+
+    localStorage.removeItem("token");
+
+    window.location.href =
+        "login.html";
+});

@@ -27,7 +27,7 @@ loginBtn.addEventListener("click", async () => {
 
         alert("Login Successful");
 
-        window.location.href = "dashboard.html";
+        window.location.href = "products.html";
 
     } else {
 

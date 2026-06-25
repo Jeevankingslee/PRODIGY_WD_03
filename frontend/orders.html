@@ -8,9 +8,18 @@
 <h1>Order History</h1>
 
 <div id="orders"></div>
-
+<button id="logoutBtn">
+    Logout
+</button>
 <script>
+const token =
+    localStorage.getItem("token");
 
+if(!token){
+
+    window.location.href =
+        "login.html";
+}
 async function loadOrders(){
 
     const response =
@@ -44,6 +53,15 @@ async function loadOrders(){
 
         div.appendChild(item);
     });
+    document
+.getElementById("logoutBtn")
+.addEventListener("click",()=>{
+
+    localStorage.removeItem("token");
+
+    window.location.href =
+        "login.html";
+});
 }
 
 loadOrders();

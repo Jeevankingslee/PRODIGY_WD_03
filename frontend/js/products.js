@@ -1,3 +1,11 @@
+const token =
+    localStorage.getItem("token");
+
+if(!token){
+
+    window.location.href =
+        "login.html";
+}
 const productsDiv = document.getElementById("products");
 
 async function loadProducts() {
@@ -50,3 +58,12 @@ function addToCart(product) {
 }
 
 loadProducts();
+document
+.getElementById("logoutBtn")
+.addEventListener("click",()=>{
+
+    localStorage.removeItem("token");
+
+    window.location.href =
+        "login.html";
+});
