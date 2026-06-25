@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+
+<h1>Order History</h1>
+
+<div id="orders"></div>
+
+<script>
+
+async function loadOrders(){
+
+    const response =
+        await fetch(
+        "http://localhost:5000/api/orders"
+    );
+
+    const orders =
+        await response.json();
+
+    const div =
+        document.getElementById("orders");
+
+    orders.forEach(order=>{
+
+        const item =
+            document.createElement("div");
+
+        item.innerHTML=`
+            <h3>Total:
+            ₹${order.total}</h3>
+
+            <p>
+            ${new Date(
+                order.createdAt
+            ).toLocaleString()}
+            </p>
+
+            <hr>
+        `;
+
+        div.appendChild(item);
+    });
+}
+
+loadOrders();
+
+</script>
+
+</body>
+</html> 
